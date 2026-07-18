@@ -1,280 +1,766 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>CoreTech Computer & Network Solution | Computer Repair & Network Services Ahmedabad</title>
-
 <link rel="canonical" href="https://coretechcomputerin.github.io/coretech-website/">
-
 <meta name="title" content="CoreTech Computer & Network Solution | Computer Repair & Network Services Ahmedabad">
-
 <meta name="description" content="CoreTech Computer & Network Solution provides Computer Repair, Laptop Repair, Printer Support, Network Installation, CCTV Setup and IT Services in Ahmedabad.">
-
 <meta name="keywords" content="Computer Repair Ahmedabad, Laptop Repair Ahmedabad, Printer Repair, Network Support, CCTV Installation, WiFi Setup, IT Support Ahmedabad">
-
 <meta name="author" content="CoreTech Computer & Network Solution">
-    <meta name="google-site-verification" content="2aEuN-Qp-4Mi63k8rX4g8yusdr2liuydDddKpdDykEY" />
+<meta name="google-site-verification" content="2aEuN-Qp-4Mi63k8rX4g8yusdr2liuydDddKpdDykEY" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Arial,Helvetica,sans-serif;
-}
+  :root{
+    --bg:#0A0F1E;
+    --panel:#111A2E;
+    --panel-raised:#16213B;
+    --line:#25324D;
+    --text:#E7EBF3;
+    --text-dim:#8E9AB8;
+    --signal:#33E1A1;
+    --signal-dim:#1B8F68;
+    --warn:#FF7A45;
+    --paper:#F3F5FA;
+    --paper-panel:#FFFFFF;
+    --paper-text:#101627;
+    --mono: 'IBM Plex Mono', ui-monospace, monospace;
+    --sans: 'IBM Plex Sans', system-ui, -apple-system, sans-serif;
+    --radius: 4px;
+  }
 
-body{
-    background:#f5f7fa;
-    color:#333;
-}
+  *{ margin:0; padding:0; box-sizing:border-box; }
 
-header{
-    background:linear-gradient(135deg,#0A3D91,#1678F2);
-    color:#fff;
-    padding:70px 20px;
-    text-align:center;
-}
+  html{ scroll-behavior:smooth; }
 
-header h1{
-    font-size:45px;
-}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:var(--sans);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
 
-header p{
-    margin-top:15px;
-    font-size:20px;
-}
+  a{ color:inherit; }
 
-.btn{
+  ::selection{ background:var(--signal); color:#06120D; }
+
+  :focus-visible{
+    outline:2px solid var(--signal);
+    outline-offset:3px;
+  }
+
+  .wrap{ max-width:1120px; margin:0 auto; padding:0 24px; }
+
+  /* --- Ticker bar --- */
+  .ticker{
+    background:#050810;
+    border-bottom:1px solid var(--line);
+    overflow:hidden;
+    white-space:nowrap;
+    font-family:var(--mono);
+    font-size:12px;
+    letter-spacing:.04em;
+    color:var(--text-dim);
+    padding:8px 0;
+  }
+  .ticker-track{
     display:inline-block;
-    margin:15px 10px;
-    padding:14px 28px;
-    background:#ff9800;
-    color:#fff;
+    padding-left:100%;
+    animation:ticker 32s linear infinite;
+  }
+  .ticker span{ margin-right:48px; }
+  .ticker .dot{ color:var(--signal); }
+  @keyframes ticker{
+    0%{ transform:translateX(0); }
+    100%{ transform:translateX(-100%); }
+  }
+
+  /* --- Header / nav --- */
+  header.site{
+    border-bottom:1px solid var(--line);
+    background:rgba(10,15,30,.9);
+    backdrop-filter:blur(8px);
+    position:sticky;
+    top:0;
+    z-index:40;
+  }
+  .nav{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:18px 0;
+  }
+  .brand{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-family:var(--mono);
+    font-weight:600;
+    font-size:16px;
+    letter-spacing:.02em;
     text-decoration:none;
-    border-radius:30px;
-    font-weight:bold;
-    transition:.3s;
-}
+  }
+  .brand .mark{
+    width:10px; height:10px;
+    background:var(--signal);
+    box-shadow:0 0 0 3px rgba(51,225,161,.15);
+    border-radius:2px;
+    flex-shrink:0;
+  }
+  .nav-links{
+    display:flex;
+    gap:32px;
+    font-size:14px;
+    color:var(--text-dim);
+  }
+  .nav-links a{ text-decoration:none; transition:color .2s; }
+  .nav-links a:hover{ color:var(--text); }
+  .nav-cta{
+    display:flex;
+    gap:10px;
+  }
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:10px 18px;
+    font-family:var(--mono);
+    font-size:13px;
+    font-weight:600;
+    text-decoration:none;
+    border-radius:var(--radius);
+    border:1px solid transparent;
+    transition:.18s ease;
+    cursor:pointer;
+    white-space:nowrap;
+  }
+  .btn-primary{
+    background:var(--signal);
+    color:#06170F;
+  }
+  .btn-primary:hover{ background:#5CF0BB; transform:translateY(-1px); }
+  .btn-ghost{
+    background:transparent;
+    border-color:var(--line);
+    color:var(--text);
+  }
+  .btn-ghost:hover{ border-color:var(--signal); color:var(--signal); }
 
-.btn:hover{
-    background:#e68900;
-}
+  .menu-toggle{ display:none; }
 
-section{
-    max-width:1100px;
-    margin:auto;
-    padding:60px 20px;
-}
-
-.title{
-    text-align:center;
-    color:#0A3D91;
-    margin-bottom:40px;
-    font-size:35px;
-}
-
-.about{
-    text-align:center;
-    font-size:18px;
-    line-height:1.8;
-}
-
-.services{
+  /* --- Hero --- */
+  .hero{
+    position:relative;
+    padding:88px 0 72px;
+    overflow:hidden;
+    border-bottom:1px solid var(--line);
+  }
+  .hero-grid{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-    gap:25px;
-}
+    grid-template-columns:1.15fr .85fr;
+    gap:56px;
+    align-items:center;
+  }
+  .eyebrow{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    font-family:var(--mono);
+    font-size:12px;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    color:var(--signal);
+    border:1px solid var(--signal-dim);
+    padding:6px 12px;
+    border-radius:20px;
+    margin-bottom:24px;
+  }
+  .eyebrow .pulse{
+    width:6px; height:6px; border-radius:50%;
+    background:var(--signal);
+    animation:pulse 1.8s ease-in-out infinite;
+  }
+  @keyframes pulse{
+    0%,100%{ opacity:1; box-shadow:0 0 0 0 rgba(51,225,161,.5); }
+    50%{ opacity:.6; box-shadow:0 0 0 6px rgba(51,225,161,0); }
+  }
+  h1{
+    font-family:var(--mono);
+    font-size:clamp(32px,4.4vw,54px);
+    line-height:1.08;
+    font-weight:600;
+    letter-spacing:-.01em;
+    margin-bottom:20px;
+  }
+  h1 .accent{ color:var(--signal); }
+  .hero p.lead{
+    font-size:17px;
+    color:var(--text-dim);
+    max-width:480px;
+    margin-bottom:32px;
+  }
+  .hero-actions{ display:flex; gap:14px; flex-wrap:wrap; margin-bottom:36px; }
+  .btn-lg{ padding:14px 26px; font-size:14px; }
 
-.card{
-    background:white;
-    border-radius:12px;
-    padding:30px;
-    box-shadow:0 5px 15px rgba(0,0,0,.08);
-    transition:.3s;
-}
+  .trust-row{
+    display:flex;
+    gap:28px;
+    flex-wrap:wrap;
+    font-family:var(--mono);
+    font-size:12px;
+    color:var(--text-dim);
+  }
+  .trust-row strong{ color:var(--text); font-size:15px; display:block; }
 
-.card:hover{
-    transform:translateY(-8px);
-}
+  /* --- Diagnostic panel (signature element) --- */
+  .panel{
+    background:var(--panel);
+    border:1px solid var(--line);
+    border-radius:8px;
+    overflow:hidden;
+    font-family:var(--mono);
+    box-shadow:0 24px 60px -20px rgba(0,0,0,.6);
+  }
+  .panel-head{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:12px 16px;
+    background:var(--panel-raised);
+    border-bottom:1px solid var(--line);
+    font-size:11px;
+    color:var(--text-dim);
+    letter-spacing:.06em;
+    text-transform:uppercase;
+  }
+  .panel-dots{ display:flex; gap:6px; }
+  .panel-dots span{ width:8px; height:8px; border-radius:50%; background:var(--line); }
+  .panel-dots span:nth-child(1){ background:#FF6262; }
+  .panel-dots span:nth-child(2){ background:#FFC24B; }
+  .panel-dots span:nth-child(3){ background:var(--signal); }
+  .panel-body{ padding:20px; }
+  .diag-row{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:11px 0;
+    border-bottom:1px dashed var(--line);
+    font-size:13px;
+  }
+  .diag-row:last-child{ border-bottom:none; }
+  .diag-label{ color:var(--text-dim); }
+  .diag-status{ display:flex; align-items:center; gap:8px; color:var(--signal); font-weight:600; }
+  .diag-status .led{
+    width:7px; height:7px; border-radius:50%;
+    background:var(--signal);
+    box-shadow:0 0 8px var(--signal);
+  }
+  .panel-footer{
+    padding:14px 20px;
+    background:var(--panel-raised);
+    border-top:1px solid var(--line);
+    font-size:11px;
+    color:var(--text-dim);
+    display:flex;
+    justify-content:space-between;
+  }
 
-.card h3{
-    color:#0A3D91;
+  /* --- Section shell --- */
+  section{ padding:88px 0; }
+  .section-head{ margin-bottom:44px; max-width:640px; }
+  .section-tag{
+    font-family:var(--mono);
+    font-size:12px;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+    color:var(--signal);
+    margin-bottom:12px;
+    display:block;
+  }
+  .section-title{
+    font-family:var(--mono);
+    font-size:clamp(24px,3vw,34px);
+    font-weight:600;
+    letter-spacing:-.01em;
+    margin-bottom:14px;
+  }
+  .section-desc{ color:var(--text-dim); font-size:15.5px; max-width:560px; }
+
+  /* --- Services --- */
+  .services{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    border:1px solid var(--line);
+    border-radius:8px;
+    overflow:hidden;
+  }
+  .service{
+    padding:32px 28px;
+    border-right:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+    background:var(--panel);
+    transition:background .2s;
+    position:relative;
+  }
+  .service:nth-child(3n){ border-right:none; }
+  .service:hover{ background:var(--panel-raised); }
+  .service-idx{
+    font-family:var(--mono);
+    font-size:11px;
+    color:var(--signal-dim);
+    letter-spacing:.06em;
+    margin-bottom:16px;
+  }
+  .service h3{
+    font-size:17px;
+    font-weight:600;
     margin-bottom:10px;
-}
+  }
+  .service p{
+    color:var(--text-dim);
+    font-size:14px;
+  }
 
-.why{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-gap:20px;
-text-align:center;
-}
+  /* --- Why / metrics strip --- */
+  .why-strip{
+    background:var(--paper);
+    color:var(--paper-text);
+  }
+  .why-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:1px;
+    background:#DCE1EC;
+    border:1px solid #DCE1EC;
+    border-radius:8px;
+    overflow:hidden;
+  }
+  .why-cell{
+    background:var(--paper-panel);
+    padding:30px 26px;
+  }
+  .why-cell .num{
+    font-family:var(--mono);
+    font-size:32px;
+    font-weight:700;
+    color:#0A3D91;
+    margin-bottom:6px;
+  }
+  .why-cell .label{
+    font-family:var(--mono);
+    font-size:12px;
+    letter-spacing:.05em;
+    text-transform:uppercase;
+    color:#5A6478;
+  }
+  .why-strip .section-tag{ color:#0A3D91; }
+  .why-strip .section-title{ color:#0A3D91; }
+  .why-strip .section-desc{ color:#5A6478; }
 
-.box{
-background:#0A3D91;
-color:white;
-padding:25px;
-border-radius:10px;
-}
+  /* --- Process --- */
+  .process{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:0;
+    counter-reset:step;
+  }
+  .step{
+    padding:0 24px 0 0;
+    position:relative;
+  }
+  .step:not(:last-child)::after{
+    content:"";
+    position:absolute;
+    top:9px;
+    right:0;
+    width:24px;
+    height:1px;
+    background:var(--line);
+  }
+  .step .step-num{
+    font-family:var(--mono);
+    font-size:12px;
+    color:var(--signal);
+    border:1px solid var(--signal-dim);
+    width:34px; height:20px;
+    display:flex; align-items:center; justify-content:center;
+    border-radius:3px;
+    margin-bottom:18px;
+  }
+  .step h4{ font-size:16px; margin-bottom:8px; }
+  .step p{ font-size:13.5px; color:var(--text-dim); }
 
-.contact{
-background:white;
-padding:40px;
-border-radius:10px;
-box-shadow:0 5px 15px rgba(0,0,0,.08);
-line-height:2;
-font-size:18px;
-}
+  /* --- Contact --- */
+  .contact-wrap{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:1px;
+    background:var(--line);
+    border:1px solid var(--line);
+    border-radius:8px;
+    overflow:hidden;
+  }
+  .contact-block{ background:var(--panel); padding:40px; }
+  .contact-item{
+    display:flex;
+    gap:16px;
+    padding:16px 0;
+    border-bottom:1px dashed var(--line);
+  }
+  .contact-item:last-child{ border-bottom:none; }
+  .contact-item .ic{
+    font-family:var(--mono);
+    color:var(--signal);
+    font-size:13px;
+    width:20px;
+    flex-shrink:0;
+    padding-top:2px;
+  }
+  .contact-item .body strong{ display:block; font-size:14px; margin-bottom:2px; }
+  .contact-item .body span, .contact-item .body a{
+    color:var(--text-dim);
+    font-size:14px;
+    text-decoration:none;
+  }
+  .contact-item .body a:hover{ color:var(--signal); }
 
-footer{
-background:#0A3D91;
-color:white;
-text-align:center;
-padding:20px;
-margin-top:50px;
-}
+  .hours-panel{
+    background:var(--panel-raised);
+    font-family:var(--mono);
+  }
+  .hours-row{
+    display:flex;
+    justify-content:space-between;
+    padding:9px 0;
+    font-size:13px;
+    border-bottom:1px dashed var(--line);
+    color:var(--text-dim);
+  }
+  .hours-row:last-child{ border-bottom:none; }
+  .hours-row .today{ color:var(--signal); font-weight:600; }
+  .cta-block{ margin-top:28px; }
 
-.whatsapp{
-position:fixed;
-bottom:20px;
-right:20px;
-background:#25D366;
-color:white;
-padding:15px 20px;
-border-radius:50px;
-text-decoration:none;
-font-weight:bold;
-box-shadow:0 5px 15px rgba(0,0,0,.3);
-}
+  /* --- Footer --- */
+  footer.site{
+    border-top:1px solid var(--line);
+    padding:28px 0;
+    font-family:var(--mono);
+    font-size:12px;
+    color:var(--text-dim);
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:12px;
+  }
+  footer.site a{ text-decoration:none; }
+  footer.site a:hover{ color:var(--signal); }
+
+  /* --- WhatsApp float --- */
+  .whatsapp-float{
+    position:fixed;
+    bottom:22px; right:22px;
+    background:#1FBE5A;
+    color:#fff;
+    width:56px; height:56px;
+    border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    text-decoration:none;
+    box-shadow:0 10px 26px rgba(0,0,0,.35);
+    z-index:50;
+    font-size:26px;
+    transition:transform .2s;
+  }
+  .whatsapp-float:hover{ transform:scale(1.06); }
+
+  /* --- Responsive --- */
+  @media (max-width:860px){
+    .hero-grid{ grid-template-columns:1fr; }
+    .services{ grid-template-columns:1fr 1fr; }
+    .service:nth-child(3n){ border-right:1px solid var(--line); }
+    .service:nth-child(2n){ border-right:none; }
+    .why-grid{ grid-template-columns:1fr; }
+    .process{ grid-template-columns:1fr 1fr; row-gap:32px; }
+    .step:nth-child(2n)::after{ display:none; }
+    .contact-wrap{ grid-template-columns:1fr; }
+    .nav-links{ display:none; }
+  }
+  @media (max-width:560px){
+    .services{ grid-template-columns:1fr; }
+    .service{ border-right:none !important; }
+    .process{ grid-template-columns:1fr; }
+    .step::after{ display:none; }
+    .hero-actions .btn{ flex:1; justify-content:center; }
+    .trust-row{ gap:20px; }
+    footer.site{ flex-direction:column; text-align:center; }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition:none !important; scroll-behavior:auto !important; }
+  }
 </style>
-
 </head>
-
 <body>
 
-<header>
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track">
+    <span><span class="dot">●</span> SYSTEM STATUS: ALL SERVICES OPERATIONAL</span>
+    <span><span class="dot">●</span> AVG RESPONSE TIME: UNDER 2 HOURS</span>
+    <span><span class="dot">●</span> ON-SITE SUPPORT — AHMEDABAD, GUJARAT</span>
+    <span><span class="dot">●</span> MON–SAT · 09:00–20:00</span>
+    <span><span class="dot">●</span> SYSTEM STATUS: ALL SERVICES OPERATIONAL</span>
+    <span><span class="dot">●</span> AVG RESPONSE TIME: UNDER 2 HOURS</span>
+    <span><span class="dot">●</span> ON-SITE SUPPORT — AHMEDABAD, GUJARAT</span>
+    <span><span class="dot">●</span> MON–SAT · 09:00–20:00</span>
+  </div>
+</div>
 
-<h1>CoreTech Computer & Network Solution</h1>
-
-<p>Professional Computer Repair • Networking • Printer Support • CCTV • IT Services</p>
-
-<a href="tel:+919104621114" class="btn">📞 Call Now</a>
-
-<a href="https://wa.me/919104621114" class="btn">💬 WhatsApp</a>
-
+<header class="site">
+  <div class="wrap nav">
+    <a href="#top" class="brand"><span class="mark"></span> CORETECH_</a>
+    <nav class="nav-links">
+      <a href="#services">Services</a>
+      <a href="#why">Why Us</a>
+      <a href="#process">Process</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="nav-cta">
+      <a href="tel:+919104621114" class="btn btn-ghost">Call</a>
+      <a href="https://wa.me/919104621114" class="btn btn-primary">WhatsApp</a>
+    </div>
+  </div>
 </header>
 
-<section>
+<main id="top">
 
-<h2 class="title">About Us</h2>
+  <section class="hero" style="padding-top:64px;">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="eyebrow"><span class="pulse"></span> Currently accepting service calls</span>
+        <h1>Your systems, <span class="accent">diagnosed</span> and fixed — not just restarted.</h1>
+        <p class="lead">CoreTech Computer & Network Solution handles computer repair, networking, printers and CCTV for homes and offices across Ahmedabad. On-site, methodical, and priced fairly.</p>
+        <div class="hero-actions">
+          <a href="tel:+919104621114" class="btn btn-primary btn-lg">📞 Call +91 91046 21114</a>
+          <a href="https://wa.me/919104621114" class="btn btn-ghost btn-lg">💬 Message on WhatsApp</a>
+        </div>
+        <div class="trust-row">
+          <div><strong>6</strong>core services</div>
+          <div><strong>On-Site</strong>home & office visits</div>
+          <div><strong>Mon–Sat</strong>9 AM – 8 PM</div>
+          <div><strong>Ahmedabad</strong>Gujarat</div>
+        </div>
+      </div>
 
-<div class="about">
+      <div class="panel" role="img" aria-label="Diagnostic status panel showing system checks">
+        <div class="panel-head">
+          <span>diagnostic.log</span>
+          <div class="panel-dots"><span></span><span></span><span></span></div>
+        </div>
+        <div class="panel-body">
+          <div class="diag-row">
+            <span class="diag-label">Hardware check</span>
+            <span class="diag-status"><span class="led"></span> PASS</span>
+          </div>
+          <div class="diag-row">
+            <span class="diag-label">Network & WiFi</span>
+            <span class="diag-status"><span class="led"></span> STABLE</span>
+          </div>
+          <div class="diag-row">
+            <span class="diag-label">Printer queue</span>
+            <span class="diag-status"><span class="led"></span> CLEAR</span>
+          </div>
+          <div class="diag-row">
+            <span class="diag-label">CCTV feed</span>
+            <span class="diag-status"><span class="led"></span> LIVE</span>
+          </div>
+          <div class="diag-row">
+            <span class="diag-label">Windows install</span>
+            <span class="diag-status"><span class="led"></span> READY</span>
+          </div>
+          <div class="diag-row">
+            <span class="diag-label">AMC coverage</span>
+            <span class="diag-status"><span class="led"></span> ACTIVE</span>
+          </div>
+        </div>
+        <div class="panel-footer">
+          <span>coretech@ahmedabad</span>
+          <span>uptime: reliable</span>
+        </div>
+      </div>
+    </div>
+  </section>
 
-We provide reliable Computer Repair, Laptop Repair, Printer Support, Network Installation, CCTV Setup and IT Solutions for Homes, Offices and Businesses.
+  <section id="services">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="section-tag">// What we fix</span>
+        <h2 class="section-title">Six core services, done properly</h2>
+        <p class="section-desc">From a single laptop to a full office network, each job gets the same methodical approach: check, confirm, fix, verify.</p>
+      </div>
 
-Our goal is to deliver Fast, Affordable and Professional IT Support.
+      <div class="services">
+        <div class="service">
+          <div class="service-idx">01 / HARDWARE</div>
+          <h3>💻 Computer Repair</h3>
+          <p>Desktop and laptop troubleshooting — hardware faults, slow performance, boot issues and part replacement.</p>
+        </div>
+        <div class="service">
+          <div class="service-idx">02 / NETWORK</div>
+          <h3>🌐 Network Setup</h3>
+          <p>LAN, WiFi, router and switch configuration for homes and offices, tuned for stable coverage.</p>
+        </div>
+        <div class="service">
+          <div class="service-idx">03 / PERIPHERAL</div>
+          <h3>🖨 Printer Support</h3>
+          <p>Installation, driver setup and troubleshooting for office and home printers.</p>
+        </div>
+        <div class="service">
+          <div class="service-idx">04 / SECURITY</div>
+          <h3>📷 CCTV Installation</h3>
+          <p>Camera placement, wiring and configuration for reliable round-the-clock monitoring.</p>
+        </div>
+        <div class="service">
+          <div class="service-idx">05 / SOFTWARE</div>
+          <h3>🪟 Windows Installation</h3>
+          <p>Clean formatting, driver installation and essential software setup.</p>
+        </div>
+        <div class="service">
+          <div class="service-idx">06 / ONGOING</div>
+          <h3>🛠 AMC Services</h3>
+          <p>Annual maintenance contracts for offices that need consistent, scheduled IT upkeep.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-</div>
+  <section id="why" class="why-strip">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="section-tag">// Why choose us</span>
+        <h2 class="section-title">Built for people who don't want to think about IT again</h2>
+        <p class="section-desc">Fast response, fair pricing, and on-site visits — the basics done consistently.</p>
+      </div>
+      <div class="why-grid">
+        <div class="why-cell"><div class="num">⚡</div><div class="label">Fast Response</div></div>
+        <div class="why-cell"><div class="num">✔</div><div class="label">Experienced IT Support</div></div>
+        <div class="why-cell"><div class="num">💰</div><div class="label">Affordable Pricing</div></div>
+        <div class="why-cell"><div class="num">🏢</div><div class="label">On-Site Service</div></div>
+        <div class="why-cell"><div class="num">🔒</div><div class="label">Trusted Solutions</div></div>
+        <div class="why-cell"><div class="num">😊</div><div class="label">Customer Satisfaction</div></div>
+      </div>
+    </div>
+  </section>
 
-</section>
+  <section id="process">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="section-tag">// How it works</span>
+        <h2 class="section-title">One call to a working system</h2>
+      </div>
+      <div class="process">
+        <div class="step">
+          <div class="step-num">01</div>
+          <h4>You reach out</h4>
+          <p>Call or WhatsApp with what's wrong — no need to diagnose it yourself.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">02</div>
+          <h4>We assess</h4>
+          <p>Remote triage where possible, or an on-site visit scheduled at your convenience.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">03</div>
+          <h4>We fix it</h4>
+          <p>Clear pricing before work starts, and a proper fix — not a temporary patch.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">04</div>
+          <h4>We verify</h4>
+          <p>Everything is tested before we leave, so the issue doesn't come back next week.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<section>
+  <section id="contact">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="section-tag">// Get in touch</span>
+        <h2 class="section-title">Contact CoreTech</h2>
+      </div>
 
-<h2 class="title">Our Services</h2>
+      <div class="contact-wrap">
+        <div class="contact-block">
+          <div class="contact-item">
+            <div class="ic">TEL</div>
+            <div class="body">
+              <strong>Phone</strong>
+              <a href="tel:+919104621114">+91 91046 21114</a>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="ic">MAIL</div>
+            <div class="body">
+              <strong>Email</strong>
+              <a href="mailto:Sheikhayaz648@gmail.com">Sheikhayaz648@gmail.com</a>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="ic">IG</div>
+            <div class="body">
+              <strong>Instagram</strong>
+              <a href="https://www.instagram.com/coretech_it_solution?igsh=MWRtb3U3ZjdtaWcw" target="_blank" rel="noopener">@coretech_it_solution</a>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="ic">LOC</div>
+            <div class="body">
+              <strong>Location</strong>
+              <span>Ahmedabad, Gujarat</span>
+            </div>
+          </div>
 
-<div class="services">
+          <div class="cta-block">
+            <a href="https://wa.me/919104621114" class="btn btn-primary btn-lg">💬 Start a WhatsApp chat</a>
+          </div>
+        </div>
 
-<div class="card">
-<h3>💻 Computer Repair</h3>
-Desktop & Laptop Troubleshooting
-</div>
+        <div class="contact-block hours-panel">
+          <div class="panel-head" style="margin:-40px -40px 20px; padding:14px 20px;">
+            <span>working_hours.cfg</span>
+            <div class="panel-dots"><span></span><span></span><span></span></div>
+          </div>
+          <div class="hours-row"><span>Monday</span><span>09:00 – 20:00</span></div>
+          <div class="hours-row"><span>Tuesday</span><span>09:00 – 20:00</span></div>
+          <div class="hours-row"><span>Wednesday</span><span>09:00 – 20:00</span></div>
+          <div class="hours-row"><span>Thursday</span><span>09:00 – 20:00</span></div>
+          <div class="hours-row"><span>Friday</span><span>09:00 – 20:00</span></div>
+          <div class="hours-row"><span>Saturday</span><span>09:00 – 20:00</span></div>
+          <div class="hours-row"><span>Sunday</span><span>Closed</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<div class="card">
-<h3>🌐 Network Setup</h3>
-LAN, WiFi, Router & Switch Configuration
-</div>
+</main>
 
-<div class="card">
-<h3>🖨 Printer Support</h3>
-Installation & Troubleshooting
-</div>
-
-<div class="card">
-<h3>📷 CCTV Installation</h3>
-Camera Setup & Configuration
-</div>
-
-<div class="card">
-<h3>🪟 Windows Installation</h3>
-Formatting, Drivers & Software
-</div>
-
-<div class="card">
-<h3>🛠 AMC Services</h3>
-Annual Maintenance for Offices
-</div>
-
-</div>
-
-</section>
-
-<section>
-
-<h2 class="title">Why Choose Us?</h2>
-
-<div class="why">
-
-<div class="box">⚡ Fast Response</div>
-
-<div class="box">✔ Experienced IT Support</div>
-
-<div class="box">💰 Affordable Pricing</div>
-
-<div class="box">🏢 On-Site Service</div>
-
-<div class="box">🔒 Trusted Solutions</div>
-
-<div class="box">😊 Customer Satisfaction</div>
-
-</div>
-
-</section>
-
-<section>
-
-<h2 class="title">Contact Us</h2>
-
-<div class="contact">
-
-📞 <b>Phone:</b> +91 9104621114 <br>
-
-📧 <b>Email:</b> Sheikhayaz648@gmail.com <br>
-📸 <b>Instagram:</b> <a target="_blank" href="https://www.instagram.com/coretech_it_solution?igsh=MWRtb3U3ZjdtaWcw">coretech_it_solution</a> <br>
-
-📍 <b>Location:</b> Ahmedabad, Gujarat <br>
-
-🕒 <b>Working Hours:</b> Monday - Saturday | 9:00 AM - 8:00 PM
-
-</div>
-
-</section>
-
-<footer>
-
-© 2026 CoreTech Computer & Network Solution
-
+<footer class="site">
+  <div class="wrap" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; width:100%;">
+    <span>© 2026 CoreTech Computer & Network Solution</span>
+    <span><a href="tel:+919104621114">+91 91046 21114</a> · <a href="mailto:Sheikhayaz648@gmail.com">Sheikhayaz648@gmail.com</a> · Ahmedabad, Gujarat</span>
+  </div>
 </footer>
 
-<a class="whatsapp" href="https://wa.me/919104621114">
+<a class="whatsapp-float" href="https://wa.me/919104621114" aria-label="Chat on WhatsApp" target="_blank" rel="noopener">💬</a>
 
-WhatsApp
-
-</a>
-
-</body>
-    <script type="application/ld+json">
+<script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "ComputerStore",
@@ -291,36 +777,18 @@ WhatsApp
     "postalCode": "380001",
     "addressCountry": "IN"
   },
-  "areaServed": {
-    "@type": "City",
-    "name": "Ahmedabad"
-  },
+  "areaServed": { "@type": "City", "name": "Ahmedabad" },
   "priceRange": "₹₹",
-  "openingHours": [
-    "Mo-Sa 09:00-20:00"
-  ],
+  "openingHours": ["Mo-Sa 09:00-20:00"],
   "currenciesAccepted": "INR",
-  "paymentAccepted": [
-    "Cash",
-    "UPI",
-    "Credit Card",
-    "Debit Card",
-    "Bank Transfer"
-  ],
+  "paymentAccepted": ["Cash", "UPI", "Credit Card", "Debit Card", "Bank Transfer"],
   "serviceType": [
-    "Computer Repair",
-    "Laptop Repair",
-    "Printer Repair",
-    "Network Installation",
-    "WiFi Setup",
-    "CCTV Installation",
-    "Windows Installation",
-    "Remote IT Support",
+    "Computer Repair","Laptop Repair","Printer Repair","Network Installation",
+    "WiFi Setup","CCTV Installation","Windows Installation","Remote IT Support",
     "Annual Maintenance Contract (AMC)"
   ],
-  "sameAs": [
-    "https://www.instagram.com/coretech_it_solution?igsh=MWRtb3U3ZjdtaWcw" 
-  ]
+  "sameAs": ["https://www.instagram.com/coretech_it_solution?igsh=MWRtb3U3ZjdtaWcw"]
 }
 </script>
+</body>
 </html>
