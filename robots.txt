@@ -1,1 +1,4 @@
+User-agent: *
+Allow: /
 
+Sitemap: https://coretechcomputerin.github.io/coretech-website/sitemap.xml
